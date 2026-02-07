@@ -32,4 +32,74 @@
  */
 export function calculateCoffeePrice(size, type, extras = {}) {
   // Your code here
-}
+    //     if (
+    //       !["small", "medium", "large"].includes(size) ||
+    //       !["regular", "latte", "cappuccino", "mocha"].includes(type)
+    //        ) {
+    //          return -1;
+    //    }
+    //  let total=0;
+    //    if(size=="small" && (type=="regular" || type=="latte" || type=="cappuccino" || type=="mocha")){
+    //       total+=3;
+    //       if(type=="latte"){
+    //         total+=1;
+    //       } else if(type=="cappuccino"){
+    //         total+=1.5;
+    //       } else if(type=="mocha"){
+    //         total+=2;
+    //       }
+    //    } else if(size=="medium"){
+    //       total+=4;
+    //       if(type=="latte"){
+    //         total+=1;
+    //       } else if(type=="cappuccino"){
+    //         total+=1.5;
+    //       } else if(type=="mocha"){
+    //         total+=2;
+    //       }
+    //    } else if(size=="large"){
+    //       total+=5;
+    //       if(type=="latte"){
+    //         total+=1;
+    //       } else if(type=="cappuccino"){
+    //         total+=1.5;
+    //       } else if(type=="mocha"){
+    //         total+=2;
+    //       }
+    //    }
+
+    //    if(extras.whippedCream) {
+    //     total += 0.50;
+    //    }
+
+    //    if(extras.extraShot) {
+    //     total += 0.75;
+    //    }
+
+    //    return Math.round(total * 100) / 100;
+
+     const sizePrice = {
+      small: 3,
+      medium: 4,
+      large: 5
+   };
+
+   const typeAddon = {
+      regular: 0,
+      latte: 1,
+      cappuccino: 1.5,
+      mocha: 2
+   };
+
+   if (!sizePrice[size] || typeAddon[type] === undefined) {
+      return -1;
+   }
+
+   let total = sizePrice[size] + typeAddon[type];
+
+   if (extras.whippedCream) total += 0.5;
+   if (extras.extraShot) total += 0.75;
+
+   return Number(total.toFixed(2));
+
+   }

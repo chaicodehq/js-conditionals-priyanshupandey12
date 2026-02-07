@@ -21,7 +21,7 @@
  *
  * Rules:
  *   - If weight is 0 or negative, return -1
- *   - If orderTotal is negative, return -1
+ *   - If total is negative, return -1
  *
  * @param {number} weight - Package weight in kilograms
  * @param {string} country - Destination country code (e.g., "US", "UK", "IN")
@@ -30,4 +30,29 @@
  */
 export function calculateShipping(weight, country, orderTotal) {
   // Your code here
+     if(weight<=0 ||orderTotal<0) {
+      return -1;
+     }
+      if (country === "US" && orderTotal > 50) {
+    return 0;
+  }
+
+  if (country !== "US" && orderTotal > 100) {
+    return 0;
+  }
+
+  let total = 0;
+
+  if (country === "US") {
+    if (weight <= 1) total = 5;
+    else if (weight <= 5) total = 10;
+    else total = 15;
+
+  } else {
+    if (weight <= 1) total = 15;
+    else if (weight <= 5) total = 25;
+    else total = 40;
+  }
+
+  return total;
 }
